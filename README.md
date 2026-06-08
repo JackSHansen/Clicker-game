@@ -7,9 +7,9 @@
 
 Mange browserbaserede spil er enten for simple eller afhænger af eksterne frameworks og motorer. Dette projekt undersøger, hvordan man kan udvikle et fuldt funktionelt og engagerende clicker game ved hjælp af moderne webteknologier som Next.js, TypeScript og SCSS.
 
-##🎯 Formål
+## 🎯 Formål
 
-###Formålet med projektet er at:
+### Formålet med projektet er at:
 
 Udvikle et interaktivt spil med moderne webframeworks
 Lære at arbejde med Next.js (React-baseret framework)
