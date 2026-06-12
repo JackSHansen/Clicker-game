@@ -1,0 +1,40 @@
+@use "@/styles/variables.scss" as *;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card,
+.tip {
+  background: $bg-panel;
+  border: 1px solid rgba(0, 217, 255, 0.15);
+  border-radius: $panel-radius;
+  backdrop-filter: blur(12px);
+  box-shadow: $border-glow;
+  padding: 24px;
+}
+
+.card h1 {
+  color: $gold;
+  font-size: 48px;
+}
+
+.progress {
+  margin-top: 16px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+}
+
+.fill {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #3eff76,
+    #69ff98
+  );
+  border-radius: 999px;
+}
