@@ -1,26 +1,82 @@
 .arena {
   position: relative;
+
+  height: 100%;
+
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
+
   overflow: hidden;
+
+  padding-top: clamp(20px, 3vh, 50px);
+}
+
+.arena h1 {
+  font-size: clamp(36px, 3vw, 72px);
+
+  margin: 0;
+
+  font-weight: 800;
+}
+
+.arena p {
+  font-size: clamp(16px, 1.2vw, 28px);
+
+  margin-top: 10px;
+
+  color: #9bdfff;
 }
 
 .circle {
   position: absolute;
-  width: 700px;
-  height: 700px;
+
+  width: clamp(380px, 45vw, 720px);
+  height: clamp(380px, 45vw, 720px);
+
+  top: 48%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
   border-radius: 50%;
-  border: 2px solid rgba(0,217,255,.12);
+
+  border: 2px solid rgba(0,217,255,.08);
+
+  box-shadow:
+    0 0 120px rgba(0,217,255,.12),
+    inset 0 0 120px rgba(0,217,255,.08);
 }
 
 .fish {
-  width: 700px;
-  z-index: 2;
+  width: clamp(360px, 46vw, 760px);
+
+  object-fit: contain;
+
+  margin-top: clamp(10px, 2vh, 40px);
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  transition: transform .15s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &:active {
+    transform: scale(.98);
+  }
 }
 
 .clickText {
-  font-size: 80px;
-  color: #7be4ff;
+  font-size: clamp(50px, 5vw, 100px);
+
+  color: #72e7ff;
+
+  margin-top: -30px;
+
+  text-shadow:
+    0 0 30px rgba(0,217,255,.35);
 }

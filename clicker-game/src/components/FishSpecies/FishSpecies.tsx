@@ -38,11 +38,15 @@ export default function FishSpecies() {
               index === 0 ? styles.active : ""
             }`}
           >
-            <span className={styles.number}>
-              {index + 1}.
-            </span>
+            <div className={styles.topRow}>
+              <span className={styles.number}>
+                {index + 1}.
+              </span>
 
-            <h3>{name}</h3>
+              <h3 className={styles.fishName}>
+                {name}
+              </h3>
+            </div>
 
             <div className={styles.imageWrapper}>
               <img

@@ -9,7 +9,7 @@ export default function FishArena() {
       <div className={styles.circle}></div>
 
       <img
-        src="/fish/oarfish.png"
+        src="/Fish/oarfish.png"
         alt=""
         className={styles.fish}
       />

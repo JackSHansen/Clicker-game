@@ -1,40 +1,102 @@
 @use "@/styles/variables.scss" as *;
 
 .sidebar {
+  height: 100%;
+
   display: flex;
   flex-direction: column;
-  gap: 18px;
+
+  gap: clamp(10px, 1vh, 18px);
+
+  overflow: hidden;
 }
 
 .card,
 .tip {
-  background: $bg-panel;
-  border: 1px solid rgba(0, 217, 255, 0.15);
-  border-radius: $panel-radius;
+  background: rgba(4, 22, 38, 0.82);
+
+  border: 1px solid rgba(0, 217, 255, 0.16);
+
+  border-radius: 24px;
+
   backdrop-filter: blur(12px);
-  box-shadow: $border-glow;
-  padding: 24px;
+
+  box-shadow:
+    0 0 30px rgba(0, 217, 255, 0.12),
+    inset 0 0 20px rgba(0, 217, 255, 0.04);
+
+  padding: clamp(16px, 1vw, 24px);
+
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+.card span {
+  color: #59dfff;
+  font-size: clamp(14px, .8vw, 18px);
+  font-weight: 600;
+  letter-spacing: .5px;
 }
 
 .card h1 {
-  color: $gold;
-  font-size: 48px;
+  color: #f6c24c;
+
+  font-size: clamp(38px, 2.5vw, 58px);
+
+  margin: 0;
+  line-height: 1;
+}
+
+.card h2 {
+  font-size: clamp(26px, 1.8vw, 40px);
+
+  margin: 10px 0 6px;
+}
+
+.card p {
+  margin: 0;
+  color: #c8e8ff;
+
+  font-size: clamp(14px, .9vw, 20px);
 }
 
 .progress {
-  margin-top: 16px;
+  margin-top: 18px;
+
   height: 14px;
+
   border-radius: 999px;
-  background: rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,.08);
+
+  overflow: hidden;
 }
 
 .fill {
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    #3eff76,
-    #69ff98
-  );
+
+  background:
+    linear-gradient(
+      90deg,
+      #41d969,
+      #7eff8d
+    );
+
   border-radius: 999px;
+
+  box-shadow:
+    0 0 12px rgba(87, 217, 87, .45);
+}
+
+.tip h3 {
+  margin: 0 0 12px;
+  color: #ffd54a;
+}
+
+.tip p {
+  margin: 0;
+  line-height: 1.5;
+  color: #d9f0ff;
 }

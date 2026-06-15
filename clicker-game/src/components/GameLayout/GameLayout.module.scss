@@ -1,52 +1,60 @@
 .wrapper {
-  height: 100vh;
+  height: 100dvh;
 
   display: grid;
 
   grid-template-columns:
-    290px
-    1fr
-    680px;
+    clamp(240px, 16vw, 300px)
+    minmax(450px, 1fr)
+    clamp(460px, 38vw, 720px);
 
+  /* mindre evolution bar */
   grid-template-rows:
-    1fr
-    260px;
+    minmax(0, 1fr)
+    clamp(120px, 16vh, 165px);
 
-  grid-template-areas:
-    "left center right"
-    "bottom bottom bottom";
+  gap:
+    clamp(10px, 1vw, 20px);
 
-  gap: 18px;
-  padding: 20px;
+  padding:
+    clamp(10px, 1vw, 20px);
+
+  overflow: hidden;
 }
 
-.left {
-  grid-area: left;
-}
-
-.center {
-  grid-area: center;
-}
-
-.right {
-  grid-area: right;
-}
-
+.left,
+.center,
+.right,
 .bottom {
-  grid-area: bottom;
+  min-height: 0;
 }
 
-@media (max-width: 1400px) {
+/* almindelig laptop */
+@media (max-width: 1500px) {
   .wrapper {
-    grid-template-columns: 260px 1fr;
-    grid-template-areas:
-      "left center"
-      "right right"
-      "bottom bottom";
+    grid-template-columns:
+      230px
+      minmax(380px, 1fr)
+      minmax(420px, 560px);
 
     grid-template-rows:
-      auto
-      auto
-      240px;
+      1fr
+      135px;
+  }
+}
+
+/* mindre laptops */
+@media (max-width: 1280px) {
+  .wrapper {
+    grid-template-columns:
+      220px
+      1fr
+      420px;
+
+    grid-template-rows:
+      1fr
+      120px;
+
+    gap: 10px;
   }
 }
