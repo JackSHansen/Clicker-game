@@ -1,22 +1,35 @@
+"use client";
+
 import styles from "./FishArena.module.scss";
 
-export default function FishArena() {
+type Props = {
+  fish: string;
+  onClick: () => void;
+};
+
+export default function FishArena({
+  fish,
+  onClick
+}: Props) {
   return (
     <section className={styles.arena}>
-      <h1>CLICK THE FISH!</h1>
-      <p>Evolve through 20 unique species</p>
+      <h1>
+        CLICK THE FISH!
+      </h1>
 
-      <div className={styles.circle}></div>
+      <p>
+        Evolve through
+        20 unique species
+      </p>
+
+      <div className={styles.circle} />
 
       <img
-        src="/Fish/oarfish.png"
-        alt=""
+        src={fish}
+        alt="Current Fish"
         className={styles.fish}
+        onClick={onClick}
       />
-
-      <div className={styles.clickText}>
-        +1
-      </div>
     </section>
   );
 }

@@ -1,29 +1,15 @@
+"use client";
+
 import styles from "./FishSpecies.module.scss";
+import { fishStages } from "@/utils/fishData";
 
-const fish = [
-"Neon tetra",
-"Guppy",
-"Klovnefisk",
-"Sild",
-"Aborre",
-"Makrel",
-"Laks",
-"Havkat",
-"Torsk",
-"Silkehaj",
-"Tun",
-"Sværdfisk",
-"Helleflynder",
-"Tigerhaj",
-"Hammerhaj",
-"Hvidhaj",
-"Oarfish",
-"Kæmpe rokke",
-"Hvalhaj",
-"Blåhval"
-];
+type Props = {
+  currentFishId: number;
+};
 
-export default function FishSpecies() {
+export default function FishSpecies({
+  currentFishId
+}: Props) {
   return (
     <section className={styles.wrapper}>
       <div className={styles.header}>
@@ -31,27 +17,29 @@ export default function FishSpecies() {
       </div>
 
       <div className={styles.grid}>
-        {fish.map((name, index) => (
+        {fishStages.map((fish) => (
           <div
-            key={name}
+            key={fish.id}
             className={`${styles.card} ${
-              index === 0 ? styles.active : ""
+              fish.id === currentFishId
+                ? styles.active
+                : ""
             }`}
           >
             <div className={styles.topRow}>
               <span className={styles.number}>
-                {index + 1}.
+                {fish.id}.
               </span>
 
               <h3 className={styles.fishName}>
-                {name}
+                {fish.name}
               </h3>
             </div>
 
             <div className={styles.imageWrapper}>
               <img
-                src={`/fish/${index + 1}.png`}
-                alt={name}
+                src={fish.image}
+                alt={fish.name}
                 className={styles.image}
               />
             </div>

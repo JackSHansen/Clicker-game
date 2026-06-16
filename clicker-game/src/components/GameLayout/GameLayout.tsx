@@ -1,33 +1,75 @@
+"use client";
+
 import styles from "./GameLayout.module.scss";
 
+import Sidebar from "../Sidebar/Sidebar";
+import FishArena from "../FishArena/FishArena";
+import FishSpecies from "../FishSpecies/FishSpecies";
+import EvolutionBar from "../EvolutionBar/EvolutionBar";
+
+type Props = {
+  game: {
+    score: number;
+    clickPower: number;
+    handleClick: () => void;
+    currentFish: {
+      id: number;
+      image: string;
+      name: string;
+    };
+    nextFish?: {
+      name: string;
+      unlockScore: number;
+    };
+    progress: number;
+  };
+};
+
 export default function GameLayout({
-  left,
-  center,
-  right,
-  bottom,
-}: {
-  left: React.ReactNode;
-  center: React.ReactNode;
-  right: React.ReactNode;
-  bottom: React.ReactNode;
-}) {
+  game
+}: Props) {
   return (
     <main className={styles.wrapper}>
-      <section className={styles.left}>
-        {left}
-      </section>
+      <div className={styles.left}>
+        <Sidebar
+          score={game.score}
+          currentFish={
+            game.currentFish.name
+          }
+          nextFish={
+            game.nextFish?.name ??
+            "MAX LEVEL"
+          }
+          progress={game.progress}
+        />
+      </div>
 
-      <section className={styles.center}>
-        {center}
-      </section>
+      <div className={styles.center}>
+        <FishArena
+          fish={
+            game.currentFish.image
+          }
+          onClick={
+            game.handleClick
+          }
+        />
+      </div>
 
-      <section className={styles.right}>
-        {right}
-      </section>
+      <div className={styles.right}>
+        <FishSpecies
+          currentFishId={
+            game.currentFish.id
+          }
+        />
+      </div>
 
-      <section className={styles.bottom}>
-        {bottom}
-      </section>
+      <div className={styles.bottom}>
+        <EvolutionBar
+          progress={
+            game.progress
+          }
+        />
+      </div>
     </main>
   );
 }

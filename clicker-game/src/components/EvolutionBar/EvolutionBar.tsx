@@ -1,9 +1,28 @@
+"use client";
+
 import styles from "./EvolutionBar.module.scss";
 
-export default function EvolutionBar() {
+type Props = {
+  progress: number;
+};
+
+export default function EvolutionBar({
+  progress
+}: Props) {
   return (
     <section className={styles.bar}>
-      EVOLUTION PROGRESS
+      <div
+        className={styles.progressFill}
+        style={{
+          width: `${progress}%`
+        }}
+      />
+
+      <span className={styles.text}>
+        Evolution Progress
+        {" "}
+        {Math.floor(progress)}%
+      </span>
     </section>
   );
 }

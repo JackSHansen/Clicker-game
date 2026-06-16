@@ -1,33 +1,59 @@
+"use client";
+
 import styles from "./Sidebar.module.scss";
 
-export default function Sidebar() {
+type Props = {
+  score: number;
+  currentFish: string;
+  nextFish: string;
+  progress: number;
+};
+
+export default function Sidebar({
+  score,
+  currentFish,
+  nextFish,
+  progress
+}: Props) {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.card}>
-        <h1>12,458</h1>
-        <p>Total Clicks</p>
+        <span>TOTAL CLICKS</span>
+
+        <h1>
+          {score.toLocaleString()}
+        </h1>
       </div>
 
       <div className={styles.card}>
         <span>CURRENT FISH</span>
-        <h2>Oarfish</h2>
-        <p>Stage 1 / 20</p>
+
+        <h2>{currentFish}</h2>
+
+        <p>
+          Next evolution:
+          <br />
+          {nextFish}
+        </p>
 
         <div className={styles.progress}>
-          <div className={styles.fill}></div>
+          <div
+            className={styles.fill}
+            style={{
+              width: `${progress}%`
+            }}
+          />
         </div>
-
-        <small>512 / 1,000 clicks</small>
-      </div>
-
-      <div className={styles.card}>
-        <span>NEXT FISH</span>
-        <h2>Kæmpe rokke</h2>
       </div>
 
       <div className={styles.tip}>
-        <h3>💡 TIP</h3>
-        <p>Keep clicking to evolve into bigger fish!</p>
+        <h3>TIP</h3>
+
+        <p>
+          Click the fish to gain
+          points and unlock larger
+          ocean species.
+        </p>
       </div>
     </aside>
   );
