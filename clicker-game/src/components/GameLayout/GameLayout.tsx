@@ -5,7 +5,7 @@ import styles from "./GameLayout.module.scss";
 import Sidebar from "../Sidebar/Sidebar";
 import FishArena from "../FishArena/FishArena";
 import FishSpecies from "../FishSpecies/FishSpecies";
-import EvolutionBar from "../EvolutionBar/EvolutionBar";
+import UpgradePanel from "../UpgradePanel/UpgradePanel";
 
 type Props = {
   game: {
@@ -64,11 +64,7 @@ export default function GameLayout({
       </div>
 
       <div className={styles.bottom}>
-        <EvolutionBar
-          progress={
-            game.progress
-          }
-        />
+        <UpgradePanel />
       </div>
     </main>
   );
