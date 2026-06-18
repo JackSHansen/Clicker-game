@@ -100,3 +100,29 @@
   line-height: 1.5;
   color: #d9f0ff;
 }
+.sidebar button {
+  margin-top: auto;
+
+  height: 50px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 70, 70, .15);
+
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease;
+
+  &:hover {
+    background:
+      rgba(255, 70, 70, .3);
+  }
+}

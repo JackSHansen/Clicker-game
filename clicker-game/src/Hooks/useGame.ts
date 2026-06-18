@@ -1,20 +1,76 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useState
+} from "react";
+
 import { fishStages } from "@/utils/fishData";
+
+import {
+  loadGame,
+  saveGame
+} from "@/utils/storage";
 
 export function useGame() {
   const [score, setScore] =
     useState(0);
 
-  const [clickPower] =
+  const [clickPower, setClickPower] =
     useState(1);
+
+  const [
+    autoClickPower,
+    setAutoClickPower
+  ] = useState(0);
+
+  /*
+   * LOAD SAVE
+   */
+
+  useEffect(() => {
+    const save = loadGame();
+
+    if (!save) return;
+
+    setScore(save.score);
+    setClickPower(save.clickPower);
+    setAutoClickPower(
+      save.autoClickPower
+    );
+  }, []);
+
+  /*
+   * AUTO SAVE
+   */
+
+  useEffect(() => {
+    saveGame({
+      score,
+      clickPower,
+      autoClickPower
+    });
+  }, [
+    score,
+    clickPower,
+    autoClickPower
+  ]);
+
+  /*
+   * CLICK HANDLER
+   */
 
   const handleClick = () => {
     setScore(
-      prev => prev + clickPower
+      prev =>
+        prev + clickPower
     );
   };
+
+  /*
+   * CURRENT FISH
+   */
 
   const currentFish =
     useMemo(() => {
@@ -23,10 +79,15 @@ export function useGame() {
           .reverse()
           .find(
             fish =>
-              score >= fish.unlockScore
+              score >=
+              fish.unlockScore
           ) || fishStages[0]
       );
     }, [score]);
+
+  /*
+   * NEXT FISH
+   */
 
   const nextFish =
     fishStages.find(
@@ -34,6 +95,10 @@ export function useGame() {
         fish.unlockScore >
         currentFish.unlockScore
     );
+
+  /*
+   * PROGRESS %
+   */
 
   const progress =
     nextFish
@@ -47,9 +112,17 @@ export function useGame() {
   return {
     score,
     clickPower,
+    autoClickPower,
+
+    setScore,
+    setClickPower,
+    setAutoClickPower,
+
     handleClick,
+
     currentFish,
     nextFish,
+
     progress
   };
 }

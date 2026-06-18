@@ -2,6 +2,10 @@
 
 import styles from "./Sidebar.module.scss";
 
+import {
+  clearSave
+} from "@/utils/storage";
+
 type Props = {
   score: number;
   currentFish: string;
@@ -15,6 +19,12 @@ export default function Sidebar({
   nextFish,
   progress
 }: Props) {
+  const handleReset = () => {
+    clearSave();
+
+    window.location.reload();
+  };
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.card}>
@@ -51,10 +61,16 @@ export default function Sidebar({
 
         <p>
           Click the fish to gain
-          points and unlock larger
-          ocean species.
+          points and unlock
+          larger ocean species.
         </p>
       </div>
+
+      <button
+        onClick={handleReset}
+      >
+        RESET SAVE
+      </button>
     </aside>
   );
 }
