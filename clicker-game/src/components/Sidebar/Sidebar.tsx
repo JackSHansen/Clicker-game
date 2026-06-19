@@ -21,14 +21,13 @@ export default function Sidebar({
 }: Props) {
   const handleReset = () => {
     clearSave();
-
     window.location.reload();
   };
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.card}>
-        <span>TOTAL CLICKS</span>
+        <span>POINTS</span>
 
         <h1>
           {score.toLocaleString()}
@@ -66,9 +65,7 @@ export default function Sidebar({
         </p>
       </div>
 
-      <button
-        onClick={handleReset}
-      >
+      <button onClick={handleReset}>
         RESET SAVE
       </button>
     </aside>

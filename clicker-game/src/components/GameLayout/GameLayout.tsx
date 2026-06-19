@@ -11,16 +11,30 @@ type Props = {
   game: {
     score: number;
     clickPower: number;
+    autoClickPower: number;
+
+    ownedUpgrades: string[];
+
+    buyUpgrade: (
+      id: string,
+      cost: number,
+      clickBonus: number,
+      autoBonus: number
+    ) => void;
+
     handleClick: () => void;
+
     currentFish: {
       id: number;
       image: string;
       name: string;
     };
+
     nextFish?: {
       name: string;
       unlockScore: number;
     };
+
     progress: number;
   };
 };
@@ -64,7 +78,13 @@ export default function GameLayout({
       </div>
 
       <div className={styles.bottom}>
-        <UpgradePanel />
+        <UpgradePanel
+        score={game.score}
+        ownedUpgrades={
+        game.ownedUpgrades}
+        buyUpgrade={
+        game.buyUpgrade}
+/>
       </div>
     </main>
   );

@@ -1,72 +1,81 @@
 export const upgrades = [
   {
-    id: "stronger-fins",
-    name: "Stronger Fins",
+    id: "strong-fins",
+    name: "Strong Fins",
     cost: 50,
-    clickPower: 1,
-    autoPower: 0
+    clickBonus: 1,
+    autoBonus: 0
   },
+
   {
-    id: "sharp-teeth",
-    name: "Sharp Teeth",
+    id: "better-teeth",
+    name: "Better Teeth",
     cost: 250,
-    clickPower: 5,
-    autoPower: 0
+    clickBonus: 2,
+    autoBonus: 0
   },
+
   {
     id: "predator-instinct",
     name: "Predator Instinct",
     cost: 1000,
-    clickPower: 10,
-    autoPower: 0
+    clickBonus: 5,
+    autoBonus: 0
   },
+
   {
-    id: "deep-sea-hunter",
-    name: "Deep Sea Hunter",
+    id: "apex-hunter",
+    name: "Apex Hunter",
     cost: 5000,
-    clickPower: 25,
-    autoPower: 0
+    clickBonus: 15,
+    autoBonus: 0
   },
+
   {
-    id: "apex-predator",
-    name: "Apex Predator",
+    id: "small-boat",
+    name: "Small Boat",
     cost: 25000,
-    clickPower: 100,
-    autoPower: 0
+    clickBonus: 0,
+    autoBonus: 10
   },
-  {
-    id: "small-school",
-    name: "Small School",
-    cost: 100,
-    clickPower: 0,
-    autoPower: 1
-  },
-  {
-    id: "fishing-net",
-    name: "Fishing Net",
-    cost: 500,
-    clickPower: 0,
-    autoPower: 5
-  },
+
   {
     id: "fishing-boat",
     name: "Fishing Boat",
-    cost: 2500,
-    clickPower: 0,
-    autoPower: 20
-  },
-  {
-    id: "trawler-fleet",
-    name: "Trawler Fleet",
-    cost: 10000,
-    clickPower: 0,
-    autoPower: 100
-  },
-  {
-    id: "ocean-empire",
-    name: "Ocean Empire",
     cost: 50000,
-    clickPower: 0,
-    autoPower: 500
+    clickBonus: 0,
+    autoBonus: 25
+  },
+
+  {
+    id: "trawler",
+    name: "Trawler",
+    cost: 100000,
+    clickBonus: 0,
+    autoBonus: 50
+  },
+
+  {
+    id: "research-vessel",
+    name: "Research Vessel",
+    cost: 250000,
+    clickBonus: 0,
+    autoBonus: 100
+  },
+
+  {
+    id: "submarine",
+    name: "Submarine",
+    cost: 500000,
+    clickBonus: 0,
+    autoBonus: 250
+  },
+
+  {
+    id: "ocean-fleet",
+    name: "Ocean Fleet",
+    cost: 1000000,
+    clickBonus: 0,
+    autoBonus: 500
   }
 ];

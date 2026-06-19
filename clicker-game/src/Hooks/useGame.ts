@@ -25,6 +25,11 @@ export function useGame() {
     setAutoClickPower
   ] = useState(0);
 
+  const [
+    ownedUpgrades,
+    setOwnedUpgrades
+  ] = useState<string[]>([]);
+
   /*
    * LOAD SAVE
    */
@@ -34,10 +39,18 @@ export function useGame() {
 
     if (!save) return;
 
-    setScore(save.score);
-    setClickPower(save.clickPower);
+    setScore(save.score ?? 0);
+
+    setClickPower(
+      save.clickPower ?? 1
+    );
+
     setAutoClickPower(
-      save.autoClickPower
+      save.autoClickPower ?? 0
+    );
+
+    setOwnedUpgrades(
+      save.ownedUpgrades ?? []
     );
   }, []);
 
@@ -49,16 +62,18 @@ export function useGame() {
     saveGame({
       score,
       clickPower,
-      autoClickPower
+      autoClickPower,
+      ownedUpgrades
     });
   }, [
     score,
     clickPower,
-    autoClickPower
+    autoClickPower,
+    ownedUpgrades
   ]);
 
   /*
-   * CLICK HANDLER
+   * CLICK
    */
 
   const handleClick = () => {
@@ -66,6 +81,65 @@ export function useGame() {
       prev =>
         prev + clickPower
     );
+  };
+
+  /*
+   * AUTO CLICK
+   */
+
+  useEffect(() => {
+    if (autoClickPower <= 0)
+      return;
+
+    const interval =
+      setInterval(() => {
+        setScore(
+          prev =>
+            prev +
+            autoClickPower
+        );
+      }, 1000);
+
+    return () =>
+      clearInterval(interval);
+  }, [autoClickPower]);
+
+  /*
+   * BUY UPGRADE
+   */
+
+  const buyUpgrade = (
+    id: string,
+    cost: number,
+    clickBonus: number,
+    autoBonus: number
+  ) => {
+    if (
+      ownedUpgrades.includes(id)
+    )
+      return;
+
+    if (score < cost)
+      return;
+
+    setScore(
+      prev => prev - cost
+    );
+
+    setClickPower(
+      prev =>
+        prev + clickBonus
+    );
+
+    setAutoClickPower(
+      prev =>
+        prev + autoBonus
+    );
+
+    setOwnedUpgrades(prev => [
+      ...prev,
+      id
+    ]);
   };
 
   /*
@@ -97,7 +171,7 @@ export function useGame() {
     );
 
   /*
-   * PROGRESS %
+   * PROGRESS
    */
 
   const progress =
@@ -110,19 +184,22 @@ export function useGame() {
       : 100;
 
   return {
-    score,
-    clickPower,
-    autoClickPower,
+  score,
+  clickPower,
+  autoClickPower,
 
-    setScore,
-    setClickPower,
-    setAutoClickPower,
+  ownedUpgrades,
+  buyUpgrade,
 
-    handleClick,
+  setScore,
+  setClickPower,
+  setAutoClickPower,
 
-    currentFish,
-    nextFish,
+  handleClick,
 
-    progress
-  };
+  currentFish,
+  nextFish,
+
+  progress
+};
 }

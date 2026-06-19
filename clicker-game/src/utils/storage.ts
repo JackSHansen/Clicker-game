@@ -1,29 +1,24 @@
-const STORAGE_KEY = "fish-clicker-save";
+const STORAGE_KEY =
+  "fish-clicker-save";
 
-export interface SaveData {
-  score: number;
-  clickPower: number;
-  autoClickPower: number;
-}
-
-export function saveGame(data: SaveData) {
+export function saveGame(
+  data: any
+) {
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(data)
   );
 }
 
-export function loadGame(): SaveData | null {
-  const save =
-    localStorage.getItem(STORAGE_KEY);
+export function loadGame() {
+  const data =
+    localStorage.getItem(
+      STORAGE_KEY
+    );
 
-  if (!save) return null;
+  if (!data) return null;
 
-  try {
-    return JSON.parse(save);
-  } catch {
-    return null;
-  }
+  return JSON.parse(data);
 }
 
 export function clearSave() {
